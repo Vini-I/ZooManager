@@ -24,7 +24,7 @@ public class CareTaker extends EmployeeBase{
         this.speciality = speciality;
     }
     
-    private int searchFree(String[] arr) {
+    public int searchFree(String[] arr) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == null || arr[i].isBlank()) {
                 return i;
@@ -33,7 +33,7 @@ public class CareTaker extends EmployeeBase{
         return -1;
     }
     
-    private String FeedAnimal(Animal animal) {
+    public String FeedAnimal(Animal animal) {
         int i = searchFree(this.log);
         if ( i >= 0) {
             this.log[i] = "Se alimento a " + animal.getName();
@@ -42,13 +42,18 @@ public class CareTaker extends EmployeeBase{
         return "No se puede agregar al Log";
     }
     
-    private String CheckHealth(Animal animal) {
+    public String CheckHealth(Animal animal) {
         int i = searchFree(this.log);
         if ( i >= 0) {
             this.log[i] = "Se reviso a " + animal.getName();
             return animal.getName() + " is healthy";
         }
         return "No se puede agregar al Log";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSpeciality: " + speciality;
     }
     
     

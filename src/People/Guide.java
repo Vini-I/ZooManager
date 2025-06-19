@@ -21,7 +21,8 @@ public class Guide extends EmployeeBase {
     }
 
     public void setLanguage(String[] language) {
-        this.language = language;
+        if (searchFree(language) >= 1)
+            this.language = language;
     }
 
     public Guide(int id, String name, LocalDate birthDate, String phoneNum, int Salary) {
@@ -29,7 +30,7 @@ public class Guide extends EmployeeBase {
         this.language[0] = "Spanish";
     }
     
-    private int searchFree(String[] arr) {
+    public int searchFree(String[] arr) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == null || arr[i].isBlank()) {
                 return i;
@@ -38,7 +39,7 @@ public class Guide extends EmployeeBase {
         return -1;
     }
     
-    private String giveTour(Animal animal1, Animal animal2, Animal animal3) {
+    public String giveTour(Animal animal1, Animal animal2, Animal animal3) {
         int i = searchFree(this.log);
         if ( i >= 0) {
             this.log[i] = "Se realizo un tour";
@@ -50,5 +51,9 @@ public class Guide extends EmployeeBase {
         return "No se puede agregar al Log";
     }
     
+    @Override
+    public String toString() {
+        return super.toString() + "\nLanguages: " + Arrays.toString(language) ;
+    }
     
 }
