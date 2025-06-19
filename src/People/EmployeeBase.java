@@ -5,12 +5,14 @@
 package People;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
  * @author autoa
  */
 public abstract class EmployeeBase {
+    private static final String phoneRegex = "^\\d{2}-\\d{2}-\\d{2}-\\d{2}-";
     protected int id;
     protected String name;
     protected LocalDate birthDate;
@@ -44,6 +46,24 @@ public abstract class EmployeeBase {
     public void setSalary(int Salary) {
         this.Salary = Salary;
     }
+    
+    public boolean verifyAge(LocalDate fechaNacimiento) {
+    LocalDate hoy = LocalDate.now();
+    Period edad = Period.between(fechaNacimiento, hoy);
+    return !fechaNacimiento.isAfter(hoy) && edad.getYears() >= 18;
+    }
+    
+    public EmployeeBase(int id, String name, LocalDate birthDate, String phoneNum, int salary) {
+        this.id = id;
+        this.name = name;
+         if (verifyAge(birthDate))
+            this.birthDate = birthDate;
+        if (phoneNum.matches(phoneRegex))
+            this.phoneNum = phoneNum;
+        if (salary > 300000)
+            this.Salary = salary;
+    }
+    
 
     @Override
     public String toString() {
@@ -52,3 +72,5 @@ public abstract class EmployeeBase {
     
     
 }
+
+    

@@ -5,23 +5,28 @@
 package People;
 
 import Animals.Animal;
+import java.util.Arrays;
 import java.time.LocalDate;
 
 /**
  *
  * @author autoa
  */
-public class CareTaker extends EmployeeBase{
-    private String speciality;
+public class Guide extends EmployeeBase {
+     private String[] language = new String[20];
     private String[] log = new String[200];
 
-    public String getSpeciality() {
-        return speciality;
+    public String getLanguage() {
+        return Arrays.toString(language);
     }
 
-    public CareTaker(int id, String name, LocalDate birthDate, String phoneNum, int Salary, String speciality) {
+    public void setLanguage(String[] language) {
+        this.language = language;
+    }
+
+    public Guide(int id, String name, LocalDate birthDate, String phoneNum, int Salary) {
         super(id, name, birthDate, phoneNum, Salary);
-        this.speciality = speciality;
+        this.language[0] = "Spanish";
     }
     
     private int searchFree(String[] arr) {
@@ -33,20 +38,14 @@ public class CareTaker extends EmployeeBase{
         return -1;
     }
     
-    private String FeedAnimal(Animal animal) {
+    private String giveTour(Animal animal1, Animal animal2, Animal animal3) {
         int i = searchFree(this.log);
         if ( i >= 0) {
-            this.log[i] = "Se alimento a " + animal.getName();
-            return animal.getName() + " has been fed";
-        }
-        return "No se puede agregar al Log";
-    }
-    
-    private String CheckHealth(Animal animal) {
-        int i = searchFree(this.log);
-        if ( i >= 0) {
-            this.log[i] = "Se reviso a " + animal.getName();
-            return animal.getName() + " is healthy";
+            this.log[i] = "Se realizo un tour";
+            animal1.toString();
+            animal2.toString();
+            animal3.toString();
+            return "Se realizo un tour";
         }
         return "No se puede agregar al Log";
     }
