@@ -47,7 +47,7 @@ public class Animal {
         this.currentLocation = currentLocation;
     }
 
-    public Animal(String id, String name, String species, LocalDateTime birthDate, LocalDateTime arrival) {
+    public Animal(String id, String name, String species, LocalDateTime birthDate) {
         if (id.matches(idRegex))
             this.id = id;
         this.name = name;
@@ -55,7 +55,7 @@ public class Animal {
         if (birthDate.isBefore(LocalDateTime.now()))
             this.birthDate = birthDate;
         this.currentLocation = PossibleLocations.CONSERVATIONANDRESCUE;
-        this.arrival = arrival;
+        this.arrival = LocalDateTime.now();
     }
     
     
