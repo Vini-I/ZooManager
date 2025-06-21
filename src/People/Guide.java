@@ -5,6 +5,7 @@
 package People;
 
 import Animals.Animal;
+import Tours.Tour;
 import java.util.Arrays;
 import java.time.LocalDate;
 
@@ -14,7 +15,7 @@ import java.time.LocalDate;
  */
 public class Guide extends EmployeeBase {
      private String[] language = new String[20];
-    private String[] log = new String[200];
+    private Tour[] log = new Tour[200];
 
     public String getLanguage() {
         return Arrays.toString(language);
@@ -39,13 +40,15 @@ public class Guide extends EmployeeBase {
         return -1;
     }
     
-    public String giveTour(Animal animal1, Animal animal2, Animal animal3) {
-        int i = searchFree(this.log);
-        if ( i >= 0) {
-            this.log[i] = "Se realizo un tour";
-            animal1.toString();
-            animal2.toString();
-            animal3.toString();
+    public String giveTour(Tour tour) {
+        int j = -1;
+        for (int i = 0; i < log.length; i++) {
+            if (log[i] == null) {
+                j = i;
+            }
+        }
+        if ( j >= 0) {
+            this.log[j] = tour;
             return "Se realizo un tour";
         }
         return "No se puede agregar al Log";
