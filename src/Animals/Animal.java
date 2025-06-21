@@ -4,7 +4,8 @@
  */
 package Animals;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import Util.UtilDate;
 
 /**
  *
@@ -15,9 +16,9 @@ public class Animal {
     private String id;
     private String name;
     private String species;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
     private PossibleLocations currentLocation;
-    private LocalDateTime arrival;
+    private LocalDate arrival;
 
     public String getId() {
         return id;
@@ -31,7 +32,7 @@ public class Animal {
         return species;
     }
 
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
@@ -39,7 +40,7 @@ public class Animal {
         return currentLocation;
     }
 
-    public LocalDateTime getArrival() {
+    public LocalDate getArrival() {
         return arrival;
     }
 
@@ -47,15 +48,15 @@ public class Animal {
         this.currentLocation = currentLocation;
     }
 
-    public Animal(String id, String name, String species, LocalDateTime birthDate) {
+    public Animal(String id, String name, String species, LocalDate birthDate) {
         if (id.matches(idRegex))
             this.id = id;
         this.name = name;
         this.species = species;
-        if (birthDate.isBefore(LocalDateTime.now()))
+        if (UtilDate.verifyBirth(birthDate))
             this.birthDate = birthDate;
         this.currentLocation = PossibleLocations.CONSERVATIONANDRESCUE;
-        this.arrival = LocalDateTime.now();
+        this.arrival = LocalDate.now();
     }
     
     
