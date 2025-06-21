@@ -54,6 +54,13 @@ public abstract class Person {
              this.birthDate = birthDate;
          }
     }
+     
+     public Person(int id, String name, String phoneNum) {
+        this.id = id;
+        this.name = name;
+        if (phoneNum.matches(phoneRegex))
+            this.phoneNum = phoneNum;
+    }
     
     @Override
     public String toString() {

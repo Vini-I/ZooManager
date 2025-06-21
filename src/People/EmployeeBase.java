@@ -5,7 +5,7 @@
 package People;
 
 import java.time.LocalDate;
-import java.time.Period;
+import Util.UtilDate;
 
 /**
  *
@@ -18,18 +18,13 @@ public abstract class EmployeeBase extends Person{
         this.Salary = Salary;
     }
     
-    public boolean verifyAge(LocalDate fechaNacimiento) {
-    LocalDate hoy = LocalDate.now();
-    Period edad = Period.between(fechaNacimiento, hoy);
-    return !fechaNacimiento.isAfter(hoy) && edad.getYears() >= 18;
-    }
-    
     public EmployeeBase(int id, String name, LocalDate birthDate, String phoneNum, int salary) {
-        super(id, name, birthDate, phoneNum);
+       super(id, name, phoneNum);
+       if (UtilDate.verifyBirth(birthDate) && UtilDate.verifyAge(birthDate))
+            this.birthDate = birthDate;
         if (salary > 300000)
             this.Salary = salary;
     }
-    
 
     @Override
     public String toString() {
