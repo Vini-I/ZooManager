@@ -5,6 +5,7 @@
 package People;
 
 import java.time.LocalDate;
+import Util.UtilDate;
 
 /**
  *
@@ -40,7 +41,8 @@ public abstract class Person {
     public Person(int id, String name, LocalDate birthDate, String phoneNum) {
         this.id = id;
         this.name = name;
-        this.birthDate = birthDate;
+        if(UtilDate.verifyBirth(birthDate))
+            this.birthDate = birthDate;
         if (phoneNum.matches(phoneRegex))
             this.phoneNum = phoneNum;
     }
@@ -48,7 +50,9 @@ public abstract class Person {
      public Person(int id, String name, LocalDate birthDate) {
         this.id = id;
         this.name = name;
-        this.birthDate = birthDate;
+         if (UtilDate.verifyBirth(birthDate)) {
+             this.birthDate = birthDate;
+         }
     }
     
     @Override
