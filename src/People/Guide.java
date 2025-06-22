@@ -21,6 +21,10 @@ public class Guide extends EmployeeBase {
         return Arrays.toString(language);
     }
 
+    public Tour[] getLog() {
+        return log;
+    }
+
     public void setLanguage(String[] language) {
         if (searchFree(language) >= 1)
             this.language = language;

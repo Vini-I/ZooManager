@@ -32,6 +32,10 @@ public class Tour {
         }
     }
 
+    public Animal[] getAnimals() {
+        return animals;
+    }
+
     public void tourLog(Guide guide) {
     int max = log.length;
         for (int i = 0; i < max; i++) {

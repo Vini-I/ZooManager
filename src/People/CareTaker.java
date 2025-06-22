@@ -4,7 +4,6 @@
  */
 package People;
 
-import Animals.Animal;
 import java.time.LocalDate;
 
 /**
@@ -17,6 +16,10 @@ public class CareTaker extends EmployeeBase{
 
     public String getSpeciality() {
         return speciality;
+    }
+
+    public String[] getLog() {
+        return log;
     }
 
     public CareTaker(int id, String name, LocalDate birthDate, String phoneNum, int Salary, String speciality) {
@@ -33,7 +36,7 @@ public class CareTaker extends EmployeeBase{
         return -1;
     }
     
-    public String FeedAnimal(Animal animal) {
+    public String FeedAnimal(Animals.Animal animal) {
         int i = searchFree(this.log);
         if ( i >= 0) {
             this.log[i] = "Se alimento a " + animal.getName();
@@ -42,7 +45,7 @@ public class CareTaker extends EmployeeBase{
         return "No se puede agregar al Log";
     }
     
-    public String CheckHealth(Animal animal) {
+    public String CheckHealth(Animals.Animal animal) {
         int i = searchFree(this.log);
         if ( i >= 0) {
             this.log[i] = "Se reviso a " + animal.getName();
